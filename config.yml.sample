@@ -1,0 +1,17 @@
+# On a new master commit, run STAGE deployment.
+rxaviers/app/push/heads/master:
+  - echo "Running STAGE deployment (checkout out {{commit}})" &&
+    cd /srv/stage-app &&
+    git fetch origin &&
+    git checkout --force {{commit}}
+  - echo "Restarting STAGE app" &&
+    service stage-app restart
+
+# On a new tag, run LIVE deployment.
+rxaviers/app/push/tags/*:
+  - echo "Running LIVE deployment (checking out {{tag}})" &&
+    cd /srv/app &&
+    git fetch origin &&
+    git checkout --force {{tag}}
+  - echo "Restarting LIVE app" &&
+    service app restart
