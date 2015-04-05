@@ -16,7 +16,7 @@ function help() {
     ""
   ];
 
-  return out.join("\n");
+  console.log(out.join("\n"));
 }
 
 options = nopt({
