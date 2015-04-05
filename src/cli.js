@@ -8,7 +8,7 @@ var configs, options;
 
 function help() {
   var out = [
-    "Usage: node-push-to-deploy [-p port] config-file1 [config-file2 ...]",
+    "Usage: push-to-deploy [-p port] config-file1 [config-file2 ...]",
     "",
     "General options:",
     "  -h, --help              # Print options and usage.",
