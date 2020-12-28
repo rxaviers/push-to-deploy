@@ -46,6 +46,8 @@ module.exports = function() {
         return yaml.safeLoad(fs.readFileSync(config, "utf8"));
       } else if (/json$/i.test(config)) {
         return JSON.parse(fs.readFileSync(config, "utf8"));
+      } else if (/\*$/i.test(config)) {
+        console.warn("Config filepath ends with '*', probably an empty directory, ignoring...")
       } else {
         throw new Error("Unsupported extension `" + config + "`. Supported JSON or YAML.");
       }

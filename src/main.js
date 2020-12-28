@@ -22,6 +22,10 @@ module.exports = function(configs, options) {
   console.log("Push-to-deploy server up and running on port `" + port + "`.");
 
   configs.forEach(function(config) {
+    if (!config) {
+      // Empty config
+      return;
+    }
     Object.keys(config).forEach(function(eventName) {
       var commandsTpl = alwaysArray(config[eventName]).join(";");
       var eventFn = function(data) {
